@@ -390,7 +390,7 @@ export const TRANSLATIONS = {
       cards: {
         officeTitle: "Our Office",
         officeAddress:
-          "Shop No. 7, Nysa Business Centre, Ghadge Nagar, Makhmalabad, Nashik, Maharashtra 422003",
+          "Nashik, Maharashtra",
         emailTitle: "Email Us",
         callTitle: "Call Us",
         callNote: "Available 24/7 for support and bookings.",
@@ -791,7 +791,7 @@ export const TRANSLATIONS = {
       cards: {
         officeTitle: "हमारा कार्यालय",
         officeAddress:
-          "शॉप नं. 7, नायसा बिज़नेस सेंटर, घाडगे नगर, मखमलाबाद, नासिक, महाराष्ट्र 422003",
+          "नासिक, महाराष्ट्र",
         emailTitle: "ईमेल करें",
         callTitle: "कॉल करें",
         callNote: "सहायता और बुकिंग के लिए 24/7 उपलब्ध।",
@@ -1192,7 +1192,7 @@ export const TRANSLATIONS = {
       cards: {
         officeTitle: "आमचे कार्यालय",
         officeAddress:
-          "शॉप नं. ७, नायसा बिझनेस सेंटर, घाडगे नगर, मखमलाबाद, नाशिक, महाराष्ट्र ४२२००३",
+          "नाशिक, महाराष्ट्र",
         emailTitle: "ईमेल करा",
         callTitle: "कॉल करा",
         callNote: "मदत आणि बुकिंगसाठी २४/७ उपलब्ध.",
