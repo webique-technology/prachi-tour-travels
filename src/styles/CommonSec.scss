@@ -962,3 +962,55 @@
         width: 100%;
     }
 }
+
+.mobile-bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1035;
+  background-color: $bg-light;
+  border-top: 1px solid $border-gray;
+  box-shadow: 0 -4px 16px rgba(20, 43, 69, 0.08);
+  padding: 4px 6px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.mobile-bottom-nav-item {
+  min-height: 46px;
+  border-radius: 12px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  font-size: 0.73rem;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 0.25rem 0.35rem;
+  border: 1px solid $secondary;
+  
+
+//   &.is-whatsapp {
+//     background-color: green;
+//     color: #1c6b44;
+//     border: 1px solid rgba(53, 167, 111, 0.35);
+//   }
+
+//   &.is-customize {
+//     background-color: #f7f7eb;
+//     border: 1px solid $accent;
+//     color: $primary;
+//     font-weight: 700;
+//   }
+
+//   &.is-cars {
+//     background-color: $secondary;
+//     color: $text-light;
+//     border: 1px solid rgba(33, 150, 210, 0.25);
+//   }
+}

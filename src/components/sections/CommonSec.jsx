@@ -518,7 +518,7 @@ export const PilgrimStandard = () => {
                   <h3 className="card-heading fw-bold mb-3">{item.title}</h3>
 
                   {/* Card Description */}
-                  <p className="card-desc lh-base mb-0">{item.description}</p>
+                  <p className="card-desc lh-base mb-0 d-none d-sm-block">{item.description}</p>
                 </div>
               </div>
             </Col>
