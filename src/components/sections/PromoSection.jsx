@@ -1,0 +1,324 @@
+"use client";
+import React, { useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import PropTypes from "prop-types";
+import Link from "next/link";
+import Image from "next/image";
+import * as LucideIcons from "lucide-react";
+import { PhoneCall } from "lucide-react";
+
+import "../../styles/CommonSec.scss";
+import { BookingForm } from "./CommonSec";
+import { AnimationSecComponent } from "../ui/AnimationSecComponent";
+import { useLanguage } from "@/context/LanguageContext";
+
+const PromoBanner = ({
+  content = {
+    highlightText: "",
+    mainTitleNormal: "",
+    mainTitleBold: "",
+    mainTitleSuffix: "",
+    highlightWord: "",
+    buttonText: "Explore More",
+    onBtnClick: () => {},
+  },
+  features = [],
+  desc = [],
+  bgImage,
+  translationKey = "servicesPromoSec",
+}) => {
+  const { t } = useLanguage(translationKey);
+
+  const resolveField = (field, fallback) => {
+    if (!translationKey) return fallback;
+    const val = t(`${translationKey}.${field}`);
+    return val !== undefined && val !== `${translationKey}.${field}`
+      ? val
+      : fallback;
+  };
+
+  const displayContent = {
+    ...content,
+    highlightText: resolveField("highlightText", content?.highlightText),
+    mainTitleNormal: resolveField("mainTitleNormal", content?.mainTitleNormal),
+    mainTitleBold: resolveField("mainTitleBold", content?.mainTitleBold),
+    mainTitleSuffix: resolveField("mainTitleSuffix", content?.mainTitleSuffix),
+    highlightWord: resolveField("highlightWord", content?.highlightWord),
+    buttonText: resolveField("buttonText", content?.buttonText),
+  };
+
+  const translatedDesc = translationKey ? t(`${translationKey}.desc`) : null;
+  const displayDesc = Array.isArray(translatedDesc) ? translatedDesc : desc;
+
+  const translatedFeatures = translationKey
+    ? t(`${translationKey}.features`)
+    : null;
+  const displayFeatures = Array.isArray(translatedFeatures)
+    ? translatedFeatures.map((item, idx) => ({
+        ...features[idx],
+        ...item,
+        icon: item.icon || features[idx]?.icon,
+      }))
+    : features;
+
+  return (
+    <section className="promo-banner-section overflow-hidden">
+      <Container fluid className="px-0">
+        <Row className="g-0 align-items-stretch">
+          {/* Left Column (50% Width): Split Image Box */}
+          <Col lg={6} className="image-side">
+            <div
+              className="banner-bg-img h-100 w-100"
+              style={{ backgroundImage: `url(${bgImage})` }}
+              role="img"
+              aria-label="Promo feature presentation"
+            />
+          </Col>
+
+          {/* Right Column (50% Width): Text Content Box */}
+          <Col lg={6} className="text-side d-flex align-items-center">
+            <div className="content-wrapper">
+              {/* 1. Main Content Block */}
+              {displayContent && (
+                <>
+                  {/* <AnimationSecComponent distance={200} duration={0.7}> */}
+                  {displayContent.highlightText && (
+                    <span className="highlight-tag d-block fw-bold mb-3">
+                      {displayContent.highlightText}
+                    </span>
+                  )}
+                  <h2 className="section-title">
+                    {displayContent.mainTitleNormal}
+                    {displayContent.mainTitleNormal && <br />}
+                    <span className="fw-extrabold">
+                      {displayContent.mainTitleBold}
+                    </span>
+                    {displayContent.mainTitleSuffix}
+                    {displayContent.highlightWord && (
+                      <span className="title-highlight ms-2">
+                        {displayContent.highlightWord}
+                      </span>
+                    )}
+                  </h2>
+                  {/* </AnimationSecComponent> */}
+                </>
+              )}
+
+              {/* 2. Optional Flat Paragraph Descriptions */}
+              {displayDesc?.map((value, i) => (
+                <p key={i} className="mb-3 text-muted">
+                  {value}
+                </p>
+              ))}
+
+              {/* 3. Features Services List Layout */}
+              {displayFeatures && displayFeatures.length > 0 && (
+                <div
+                // distance={200} duration={0.7}
+                >
+                  <div className="features-list my-4">
+                    {displayFeatures.map((feature, index) => {
+                      const IconComponent =
+                        LucideIcons[feature.icon] || LucideIcons.HelpCircle;
+
+                      return (
+                        <div
+                          key={feature.id || index}
+                          className="feature-item d-flex align-items-start mb-4"
+                        >
+                          <div className="icon-wrapper flex-shrink-0 me-2 me-sm-4 d-flex align-items-center justify-content-center">
+                            <img src={feature.icon} alt="icons" />
+                          </div>
+                          <div>
+                            <h5 className="feature-title fw-bold mb-1">
+                              {feature.title}
+                            </h5>
+                            <p className="feature-desc text-muted mb-0 small">
+                              {feature.description}
+                            </p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* 4. Action Button */}
+              {displayContent?.buttonText && (
+                <button
+                  className="btn btn-square primary d-inline-flex align-items-center gap-2 fw-semibold mt-2"
+                  onClick={displayContent.onBtnClick}
+                >
+                  {displayContent.buttonText}{" "}
+                  <span className="arrow-icon">&rarr;</span>
+                </button>
+              )}
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </section>
+  );
+};
+
+// Fixed clean deep Prop validation mapping
+PromoBanner.propTypes = {
+  content: PropTypes.shape({
+    highlightText: PropTypes.string,
+    mainTitleNormal: PropTypes.string,
+    mainTitleBold: PropTypes.string,
+    mainTitleSuffix: PropTypes.string,
+    highlightWord: PropTypes.string,
+    buttonText: PropTypes.string,
+    onBtnClick: PropTypes.func,
+  }),
+  features: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      icon: PropTypes.string,
+      title: PropTypes.string,
+      description: PropTypes.string,
+    }),
+  ),
+  desc: PropTypes.array,
+  bgImage: PropTypes.string.isRequired,
+  translationKey: PropTypes.string,
+};
+
+export { PromoBanner };
+
+// second promotion banner
+const AppDownloadBanner = ({
+  titlePrefix,
+  titleHighlight,
+  titleSuffix,
+  iosLink,
+  androidLink,
+  mockupImageSrc,
+  bgImage,
+  rightComponent,
+  translationKey = "ctaSec",
+}) => {
+  const { t } = useLanguage();
+
+  const resolveText = (field, fallback) => {
+    if (!translationKey) return fallback;
+    const val = t(`${translationKey}.${field}`);
+    return val && val !== `${translationKey}.${field}` ? val : fallback;
+  };
+
+  const displayPrefix = resolveText("titlePrefix", titlePrefix);
+  const displayHighlight = resolveText("titleHighlight", titleHighlight);
+  const displaySuffix = resolveText("titleSuffix", titleSuffix);
+  const displayContactBtn = resolveText("contactBtn", "Contact Us");
+  const displayWhatsappBtn = resolveText("whatsappBtn", "Chat with Us");
+
+  return (
+    <section
+      className={`app-download-banner section-padding d-flex align-items-center position-relative ${bgImage ? "" : ""}`}
+    >
+      <div className="abstract-bg-waves" />
+
+      <Container>
+        <Row className="align-items-center g-4 g-md-0">
+          {/* Left Side: Call to Action Texts & Buttons */}
+          <Col
+            md={6}
+            sm={12}
+            className="text-content-col position-relative z-1"
+          >
+            {/* <AnimationSecComponent
+              duration={0.5}
+              distance={100}
+            > */}
+            <h2 className="banner-heading text-white fw-bold mb-4">
+              {displayPrefix}{" "}
+              <span className="highlight-text">{displayHighlight}</span>{" "}
+              {displaySuffix}
+            </h2>
+            {/* </AnimationSecComponent> */}
+
+            {/* <AnimationSecComponent
+              duration={0.5}
+              distance={100}
+              delay={0.1}
+            > */}
+            <div className="download-buttons-group d-flex flex-wrap gap-3">
+              <Link href={iosLink} passHref target="_blank">
+                <div className="btn-square py-2 accent d-inline-flex align-items-center gap-2 fw-semibold text-white">
+                  <PhoneCall />
+                  {displayContactBtn}
+                </div>
+              </Link>
+
+              <Link href={androidLink} passHref target="_blank">
+                <div className="pill-btn btn py-2 btn-android d-inline-flex align-items-center gap-2 fw-semibold text-white bg-white">
+                  <img src="/images/whatsapp.svg" alt="" />
+                  {displayWhatsappBtn}
+                </div>
+              </Link>
+            </div>
+            {/* </AnimationSecComponent> */}
+          </Col>
+
+          {/* Right Side: Dynamic Component OR Fallback Image Mockup */}
+          <Col
+            md={6}
+            sm={12}
+            className="mockup-display-col position-relative d-flex align-items-end justify-content-center"
+          >
+            {rightComponent ? (
+              /* Render dynamic React component/JSX if passed */
+              <div className="dynamic-component-wrapper w-100">
+                {/* <AnimationSecComponent
+                  duration={0.5}
+                  distance={100}
+                > */}
+                {rightComponent}
+                {/* </AnimationSecComponent> */}
+              </div>
+            ) : mockupImageSrc ? (
+              /* Fallback to image layout logic if no dynamic component is provided */
+              <div className="mockup-img-wrapper">
+                {/* <AnimationSecComponent
+                  duration={0.5}
+                  distance={100}
+                > */}
+                {typeof mockupImageSrc === "object" && mockupImageSrc.src ? (
+                  <Image
+                    src={mockupImageSrc}
+                    alt="App Mobile Mockups"
+                    className="double-mockup-img img-fluid"
+                    priority
+                  />
+                ) : (
+                  <img
+                    src={mockupImageSrc}
+                    alt="App Mobile Mockups Image"
+                    className="double-mockup-img img-fluid"
+                  />
+                )}
+                {/* </AnimationSecComponent> */}
+              </div>
+            ) : null}
+          </Col>
+        </Row>
+      </Container>
+    </section>
+  );
+};
+
+AppDownloadBanner.propTypes = {
+  titlePrefix: PropTypes.string.isRequired,
+  titleHighlight: PropTypes.string.isRequired,
+  titleSuffix: PropTypes.string.isRequired,
+  iosLink: PropTypes.string.isRequired,
+  androidLink: PropTypes.string.isRequired,
+  mockupImageSrc: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  rightComponent: PropTypes.node,
+  bgImage: PropTypes.string,
+  translationKey: PropTypes.string,
+};
+
+export { AppDownloadBanner };

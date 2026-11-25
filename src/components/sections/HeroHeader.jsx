@@ -1,0 +1,189 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { Container } from "react-bootstrap";
+import { SwiperSliderComp } from "../ui/SwiperSlider";
+import { SwiperSlide } from "swiper/react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
+import { EffectFade, Autoplay } from "swiper/modules";
+import { LinkPillBtn } from "../ui/Buttons";
+import { useLanguage } from "../../context/LanguageContext";
+
+import banner2 from "../../../public/images/slide_1.webp";
+import banner3 from "../../../public/images/slide_2.webp";
+
+import "../../styles/HeroHeader.scss";
+import "../../styles/main.scss";
+
+export const heroSliderConfig = [
+  {
+    id: 1,
+    image: banner2?.src || banner2 || "",
+    title: "GO ANYWHERE. WE’LL TAKE YOU THERE.",
+    subTitle: "Book With Us",
+    desc: "One-Way • Round Trip • Airport • Outstation.",
+    btnText: "Get a Quick Quote",
+    href: "#quickQuote",
+    isScrollBtn: true, // 👈 Flag for smooth scroll target
+  },
+  {
+    id: 2,
+    image: banner3?.src || banner3 || "",
+    title: "Never Miss Your Flight. Never Wait for Your Ride.",
+    subTitle: "Book With Us",
+    desc: "On-time airport pickup and drop services from Nashik to Mumbai Airport and beyond.",
+    btnText: "Check Out",
+    href: "/airport",
+    isScrollBtn: false,
+  },
+];
+
+const HeroHeader = () => {
+  const [mounted, setMounted] = useState(false);
+  const { t } = useLanguage();
+
+  useEffect(() => {
+    const init = async () => {
+      setMounted(true);
+    };
+    init();
+  }, []);
+
+  const rawTranslatedSlides = t("heroSec.slides");
+  const translatedSlides = Array.isArray(rawTranslatedSlides)
+    ? rawTranslatedSlides
+    : [];
+
+  const slides = heroSliderConfig.map((configItem, idx) => {
+    const localized =
+      translatedSlides.find((s) => s.id === configItem.id) ||
+      translatedSlides[idx] ||
+      {};
+
+    return {
+      ...configItem,
+      title: localized.title || configItem.title,
+      subTitle: localized.subTitle || configItem.subTitle,
+      desc: localized.desc || configItem.desc,
+      btnText: localized.btnText || configItem.btnText,
+    };
+  });
+
+  // Smooth scroll handler for Quick Quote
+  const handleScrollToQuote = (e) => {
+    e.preventDefault();
+    const element = document.getElementById("quickQuote");
+    if (element) {
+      // Offset scroll by header height if navbar is fixed
+      const headerOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  if (!mounted) return null;
+
+  return (
+    <section className="hero-header-section">
+      <SwiperSliderComp
+        slidesPerView={1}
+        spaceBetween={1}
+        effect="fade"
+        modules={[EffectFade, Autoplay]}
+        pagination={false}
+        loop={slides.length > 1}
+        autoplay={{
+          delay: 6000,
+          disableOnInteraction: false,
+        }}
+        navigation={{
+          prevEl: ".hero-prev-btn",
+          nextEl: ".hero-next-btn",
+        }}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+          },
+        }}
+      >
+        {slides.map((item, index) => (
+          <SwiperSlide
+            key={item.id || index}
+            className="hero-slider-main d-flex align-items-center justify-content-center position-relative overflow-hidden"
+          >
+            <div
+              className="hero-bg-layer"
+              style={{ backgroundImage: `url("${item.image}")` }}
+            />
+
+            <div className="hero-overlay" />
+
+            <Container className="position-relative z-index-2">
+              <div className="d-flex align-items-center justify-content-center">
+                <div className="hero-slide-content text-center d-flex flex-column align-items-center justify-content-center">
+                  <h1 className="hero-title-h1 mb-2 text-uppercase hero-title playfair-display">
+                    {item.title}
+                  </h1>
+
+                  <p className="hero-description text-md mb-4 hero-description-animate">
+                    {item.desc}
+                  </p>
+
+                  <div className="w-100 d-flex flex-column align-items-center justify-content-center">
+                    <div className="d-flex align-items-center justify-content-center gap-4 pt-1 execution-row-layer">
+                      <div
+                        onClick={
+                          item.isScrollBtn ? handleScrollToQuote : undefined
+                        }
+                      >
+                        <LinkPillBtn
+                          btnText={item.btnText}
+                          target={item.id === 1 ? "_self" : "_blank"}
+                          href={item.href}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Container>
+          </SwiperSlide>
+        ))}
+
+        {/* Navigation Controls */}
+        <button
+          className="hero-prev-btn nav-custom-btn"
+          aria-label={t("heroSec.prevSlideAria")}
+        >
+          <ArrowLeft size={25} />
+        </button>
+        <button
+          className="hero-next-btn nav-custom-btn"
+          aria-label={t("heroSec.nextSlideAria")}
+        >
+          <ArrowRight size={25} />
+        </button>
+
+        {/* Scroll Trigger Bottom Target */}
+        <div
+          className="scroll-indicator"
+          onClick={() => {
+            const section = document.getElementById("whyChooseUs");
+            if (section) {
+              section.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
+        />
+      </SwiperSliderComp>
+    </section>
+  );
+};
+
+export default HeroHeader;

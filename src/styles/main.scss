@@ -1,0 +1,1167 @@
+@use "./variable" as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-poppins), sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#quickQuote {
+    scroll-margin-top: 80px;
+    /* Prevents sticky navbar from covering the booking form */
+}
+
+// text-excerpt
+.text-excerpt {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+// highlight-text
+.highlight-text {
+    &-red {
+        color: red !important;
+    }
+
+    &-primary {
+        color: $primary !important;
+    }
+
+    &-orange {
+        color: orange !important;
+    }
+
+    &-yellow {
+        color: yellow !important;
+    }
+
+    &-green {
+        color: green !important;
+    }
+
+    &-gray {
+        color: gray !important;
+    }
+
+    &-light-gary {
+        color: lightgray !important;
+    }
+
+    &-green-yellow {
+        color: greenyellow !important;
+    }
+}
+
+.section-padding {
+    padding: 90px 0;
+
+    @media(max-width:1200) {
+        padding: 60px 0;
+    }
+
+    @media(max-width:768) {
+        padding: 40px 0;
+    }
+
+    @media(max-width:576) {
+        padding: 30px 0;
+    }
+}
+
+.text-primary {
+    color: $primary; // Clean corporate blue match
+}
+
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a {
+    letter-spacing: 0.5px;
+}
+
+
+.section-title {
+    font-size: clamp($fs-common-xl-2, 5vw, $fs-common-xxl) !important;
+    color: $text-dark;
+    position: relative;
+    z-index: 5;
+    text-transform: uppercase;
+    letter-spacing: -.3px;
+    font-weight: $fw-bold;
+
+    .title-highlight {
+        color: $secondary;
+    }
+
+    @media(max-width:576px) {
+        text-align: center !important;
+    }
+}
+
+.detail-h1 {
+    font-size: $fs-common-xxl;
+    font-weight: $fw-hero-bold;
+    letter-spacing: -.3px;
+
+    @media(max-width:768px) {
+        font-size: $fs-hero-lg;
+    }
+
+    @media(max-width:576px) {
+        font-size: $fs-hero-md;
+    }
+}
+
+.small-12 {
+    font-size: $fs-common-sm !important;
+}
+
+.td-trinery-bg {
+    filter: brightness(0.9) sepia(0.5) saturate(1) hue-rotate(-36deg);
+}
+
+.bd-light-bg {
+    filter: contrast(0.95);
+}
+
+.d-black-filter {
+    filter: brightness(0.07);
+}
+
+.filter-graycsale {
+    filter: grayscale(1);
+}
+
+/* Excerpt Clamp */
+.text-excerpt {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.lh-auto {
+    line-height: normal !important;
+}
+
+.h-fit {
+    height: fit-content;
+}
+
+// swiper navigation bnts
+.nav-custom-btn {
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid orange;
+    background-color: #fff;
+    color: orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: orange;
+        color: #fff;
+        border-color: orange;
+    }
+
+    @media(max-width:768px) {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+// buttons
+// main-btn
+.pill-btn {
+    padding: 9px 25px;
+    border-radius: $radius-xl;
+    border: none;
+    font-size: $fs-common-md;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    border: 1px solid $text-dark;
+    transition: all 0.2s ease-in;
+
+    .btn-icon-image {
+        width: 24px;
+        height: 24px;
+    }
+
+    &-whatsapp {
+        color: $text-light !important;
+        background-color: $whatsapp-green !important;
+        border-color: $whatsapp-green !important;
+
+        &:hover {
+            background-color: $primary-hover !important;
+            border-color: $primary-hover !important;
+        }
+    }
+
+    @media(max-width:576px) {
+        font-size: $fs-common-base;
+    }
+}
+
+.btn-square {
+    padding: 9px 25px !important;
+    border: none !important;
+    border-radius: 4px;
+    font-size: $fs-common-md;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+
+    .arrow-icon {
+        font-size: $fs-common-md;
+        line-height: 1;
+    }
+
+    @media(max-width:576px) {
+        padding: 6px 18px !important;
+        font-size: $fs-common-sm !important;
+    }
+}
+
+.btn-square,
+.pill-btn {
+    &.primary {
+        color: $text-light !important;
+        background-color: $primary !important;
+        border-color: $primary !important;
+
+        &:hover {
+            background-color: $secondary!important;
+            border-color: $primary !important;
+        }
+    }
+
+    &.accent {
+        color: $text-light !important;
+        background-color: $accent !important;
+        border-color: $accent !important;
+
+        &:hover {
+            background-color: rgb($accent, 0.9) !important;
+            border-color: rgb($accent, 0.9) !important;
+            color: $primary;
+        }
+    }
+
+    &.font-base {
+        font-size: $fs-common-base !important;
+
+        @media(max-width:450px) {
+            font-size: $fs-common-sm !important;
+        }
+    }
+}
+
+.badge {
+    display: inline-block !important;
+    padding: 6px 18px !important;
+    margin: 0;
+    border-radius: $radius-xl !important;
+    font-size: $fs-common-base !important;
+
+    // Remove the dot here so it compiles to .badge-subTitle
+    &-subTitle {
+        background-color: $primary;
+        color: $text-light; // Added missing semicolon
+    }
+
+    &-footerLink {
+        list-style: none !important;
+        padding: 2px 10px;
+        background: #ffffff1a !important;
+        border: 1px solid #ffffff1c;
+        border-radius: 20px;
+        color: $text-light;
+        font-weight: 600;
+    }
+}
+
+.pill-badge {
+    &-text {
+        @media(max-width:767px) {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 10px !important;
+            list-style: none !important;
+
+            li {
+                list-style: none !important;
+                padding: 2px 10px !important;
+                background: #ffffff1a !important;
+                border: 1px solid #ffffff1c !important;
+                border-radius: 20px !important;
+                color: $text-light !important;
+                font-weight: 600 !important;
+            }
+        }
+    }
+
+    .icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+// counter section
+.counter-section {
+    background-color: transparent;
+
+    .counter-wrapper-card {
+        background: $bg-light;
+        border: 1px solid $border-gray;
+        border-radius: $radius-sm;
+        overflow: hidden;
+    }
+
+    .counter-col {
+        position: relative;
+
+        // Custom borders that responsive layouts can clear safely
+        @media (min-width: 992px) {
+            &:not(:last-child) {
+                border-right: 1px solid $border-gray;
+            }
+        }
+
+        @media (min-width: 20px) and (max-width: 991.98px) {
+            &:nth-child(odd) {
+                border-right: 1px solid $border-gray;
+            }
+
+            &:nth-child(1),
+            &:nth-child(2) {
+                border-bottom: 1px solid $border-gray;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            &:not(:last-child) {
+                border-bottom: 1px solid $border-gray;
+            }
+        }
+    }
+
+    .counter-item {
+        // transition: transform 0.3s ease;
+        padding: 50px;
+
+        // &:hover {
+        //     transform: translateY(-2px);
+        // }
+    }
+
+    // Icon Circle Base Styles
+    .icon-circle {
+        width: 65px;
+        height: 65px;
+        border-radius: $radius-rounded;
+    }
+
+    // Exact Color matching from UI mockup
+    .bg-purple-light {
+        background-color: #ededff;
+    }
+
+    .icon-purple {
+        color: #5c59e8;
+    }
+
+    .bg-pink-light {
+        background-color: #fbeeff;
+    }
+
+    .icon-pink {
+        color: #d946ef;
+    }
+
+    .bg-orange-light {
+        background-color: #fff0eb;
+    }
+
+    .icon-orange {
+        color: #ff6b4a;
+    }
+
+    .bg-green-light {
+        background-color: #e6f9ed;
+    }
+
+    .icon-green {
+        color: #22c55e;
+    }
+
+    // Typography
+    .counter-number {
+        color: $text-dark; // Deep slate dark text
+        font-size: $fs-common-xl-3;
+        letter-spacing: -0.5px;
+    }
+
+    .counter-label {
+        color: #64748b !important;
+        font-weight: $fw-medium;
+    }
+}
+
+// destination card
+.destination-card {
+    border-radius: 12px;
+    height: 205px;
+    min-height: 205px;
+    background: linear-gradient(180deg, #e7eef4 0%, #cfd9e2 55%, #475569 100%);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    .card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .card-fallback {
+        background: linear-gradient(180deg, #e8eff5 0%, #dce4ec 45%, #8a96a3 75%, #2f3842 100%);
+        padding-bottom: 1.75rem;
+
+        .fallback-icon {
+            color: #2c3e50;
+        }
+
+        .fallback-title {
+            font-size: $fs-common-xs;
+            color: #2c3e50;
+        }
+    }
+
+    .card-overlay {
+        background: linear-gradient(180deg,
+                rgba(15, 23, 42, 0) 35%,
+                rgba(15, 23, 42, 0.65) 72%,
+                rgba(15, 23, 42, 0.92) 100%);
+        pointer-events: none;
+    }
+
+    .card-details {
+        .destination-title {
+            font-size: $fs-common-md;
+            color: #ffffff;
+            line-height: 1.25;
+            letter-spacing: -0.2px;
+        }
+
+        .destination-subtitle {
+            font-size: $fs-common-xs;
+            color: rgba(255, 255, 255, 0.82);
+            line-height: 1.35;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    }
+
+    // Hover Effect
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 26px rgba(15, 23, 42, 0.14) !important;
+
+        .card-img {
+            transform: scale(1.08);
+        }
+    }
+
+    @media (max-width: 991.98px) {
+        height: 190px;
+        min-height: 190px;
+    }
+
+    @media (max-width: 575.98px) {
+        height: 175px;
+        min-height: 175px;
+
+        .card-details {
+            .destination-title {
+                font-size: $fs-common-base;
+            }
+        }
+    }
+}
+
+// trip card
+.trip-card {
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    .card-media {
+        height: 220px;
+
+        .img-wrapper {
+            width: 100%;
+            height: 100%;
+
+            .card-main-img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .bookmark-btn {
+            top: 15px;
+            right: 15px;
+            width: 32px;
+            height: 32px;
+            background: rgba(12, 26, 48, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 2;
+            transition: background 0.2s;
+
+            &:hover {
+                background: rgba(12, 26, 48, 0.8);
+            }
+        }
+
+        .host-avatar-wrapper {
+            bottom: -16px;
+            right: 20px;
+            z-index: 3;
+
+            img {
+                width: 34px;
+                height: 34px;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .card-body {
+        .rating-text {
+            font-size: $fs-common-base;
+        }
+
+        .reviews-count {
+            font-size: $fs-common-sm;
+        }
+
+        .card-title {
+            font-size: $fs-common-lg;
+            color: $text-dark;
+            line-height: 1.4;
+        }
+
+        .location-row {
+            font-size: $fs-common-base;
+            background-color: $bg-light-blue;
+            width: fit-content;
+
+            .location-icon {
+                color: $text-gray;
+            }
+        }
+
+        .card-desc {
+            font-size: $fs-common-base;
+            line-height: 1.6;
+        }
+    }
+
+    .card-footer-row {
+        border-color: $border-gray !important;
+
+        .current-price {
+            font-size: $fs-common-base;
+            color: $orange;
+        }
+
+        .btn-link-details {
+            color: $text-dark;
+            font-size: $fs-common-base;
+            cursor: pointer;
+
+            .arrow-icon {
+                font-size: $fs-common-sm;
+                transition: transform 0.2s ease;
+            }
+
+            &:hover .arrow-icon {
+                transform: translateX(3px);
+            }
+        }
+    }
+}
+
+// testimonial card
+.testimonial-card {
+    background-color: #f0f5fa !important; // Exact pale soft blue tint backdrop matching the canvas image
+    border-radius: 12px;
+    min-height: 340px;
+
+    .feedback-text {
+        font-size: $fs-common-md;
+        line-height: 1.6;
+        color: #4a5568 !important;
+    }
+
+    .avatar-frame {
+        width: 56px;
+        height: 56px;
+        background-color: #cbd5e1;
+
+        img {
+            object-fit: cover;
+        }
+    }
+
+    .profile-name {
+        font-size: $fs-common-md-2;
+        color: $text-dark;
+    }
+
+    .profile-role {
+        font-size: $fs-common-sm;
+        letter-spacing: 1px;
+        color: $text-gray !important;
+    }
+
+    .quote-mark-icon {
+        opacity: 0.6;
+
+        svg path {
+            fill: #dbeafe; // Clean soft accent fill variation for the graphic mark overlay
+        }
+    }
+}
+
+.featured-badge {
+    top: 15px;
+    left: 15px;
+    font-size: $fs-common-sm;
+    padding: 0.35rem 0.85rem;
+    border-radius: 4px;
+    z-index: 2;
+
+    &-orange {
+        background-color: $orange;
+        color: $text-light;
+    }
+
+    &-blue {
+        background-color: $primary;
+        color: $text-light;
+    }
+}
+
+// services tab section
+.service-tabs-section {
+    background-color: #2196d23d;
+    position: relative;
+
+    // background-attachment: fixed;
+    .tabs-nav-container {
+        position: relative;
+        z-index: 5;
+
+        .tabs-pill {
+            // background-color: $bg-light !important;
+            background: transparent;
+            border-radius: 8px;
+            display: inline-flex;
+            flex-wrap: wrap;
+        }
+
+        .tab-nav-btn {
+            background: $secondary;
+            color: $text-light;
+            font-size: $fs-common-base;
+            border-radius: 25px;
+            transition: all 0.2s ease-in;
+
+            &:hover {
+                background-color: $accent;
+            }
+
+            &.active {
+                background-color: $primary;
+                color: $text-light;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            }
+        }
+    }
+
+    .tab-view-window {
+        .slider-arrow {
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            z-index: 10;
+            color: $text-gray;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background-color: $primary !important;
+                color: $text-light;
+                border-color: $primary;
+            }
+
+            &.arrow-left {
+                left: -22px;
+            }
+
+            &.arrow-right {
+                right: -22px;
+            }
+        }
+    }
+
+    .card-image-box {
+        aspect-ratio: 4/3;
+        background-color: $bg-light-blue;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .cab-display-card {
+        transition: all 0.2s ease;
+
+        &:hover {
+            .card-image-box {
+                img {
+                    scale: 1.05;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .service-tabs-section {
+        .slider-arrow {
+            display: none !important;
+        }
+    }
+}
+
+@media(max-width:357px) {
+    .service-tabs-section {
+        .tabs-nav-container {
+            .tabs-pill {
+                // flex-wrap: nowrap;
+                width: 100% !important;
+                gap: 0 !important;
+            }
+        }
+    }
+}
+
+// why choose us section
+.why-choose-us-section {
+    .section-title {
+        color: $text-dark;
+        position: relative;
+        display: inline-block;
+    }
+
+    // Mimics the clean hand-drawn underline look
+    .accent-underline {
+        position: absolute;
+        bottom: -8px;
+        left: 15%;
+        width: 70%;
+        height: 4px;
+        background-color: rgba(255, 122, 0, 0.2); // Light orange stroke highlight accent
+        border-radius: 2px;
+    }
+
+    .features-grid {
+        margin-top: 2rem;
+    }
+
+    .feature-box {
+        border: 1px solid $border-gray;
+        border-radius: 4px;
+        height: calc(100% - 32px); // Offsets the top margin overlap cleanly
+        margin-top: 32px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+        }
+
+        .icon-badge {
+            width: 64px;
+            height: 64px;
+            border: 1px solid $border-gray;
+            border-radius: 50%;
+            z-index: 2;
+            background-color: $accent;
+            transition: background-color 0.3s ease;
+
+            svg {
+                // filter: invert(1);
+                color: $primary;
+            }
+        }
+
+        .feature-body {
+            .feature-heading {
+                font-size: $fs-common-md-2;
+                color: $text-dark;
+            }
+
+            .feature-description {
+                font-size: $fs-common-sm;
+                line-height: 1.6;
+                color: $text-gray;
+            }
+        }
+    }
+}
+
+// testimonial section
+
+.testimonial-section {
+    .section-main-heading {
+        font-size: $fs-common-xxl-2;
+        color: $text-dark;
+        letter-spacing: -0.5px;
+    }
+
+    .testimonial-swiper-wrapper {
+        .swiper-wrapper {
+            align-items: stretch;
+        }
+
+        .swiper-slide {
+            height: auto;
+        }
+    }
+
+    .testimonial-review-card {
+        border: 1px solid $border-gray;
+        box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+        &:hover {
+            // transform: translateY(-3px);
+            box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+        }
+    }
+
+    .testimonial-quote-box {
+        background-color: #f1f5f9;
+    }
+
+    .testimonial-card-header {
+        border-bottom: 1px dashed $border-gray;
+    }
+
+    .testimonial-quote-icon {
+        color: $secondary;
+        transform: scaleX(-1);
+    }
+
+    .testimonial-badge-label {
+        color: $text-dark;
+        font-size: 0.95rem;
+        line-height: 1.3;
+    }
+
+    .testimonial-star-icon {
+        color: $accent;
+        fill: $accent;
+    }
+
+    .testimonial-quote-text {
+        color: #334155;
+        font-size: 0.975rem;
+        line-height: 1.65;
+    }
+
+    .testimonial-avatar-circle {
+        width: 48px;
+        height: 48px;
+        background-color: #eef2f6;
+    }
+
+    .testimonial-avatar-icon {
+        color: $secondary;
+        fill: $secondary;
+    }
+
+    .testimonial-author-name {
+        color: $text-dark;
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+    .testimonial-author-location,
+    .testimonial-author-trip {
+        color: $text-gray;
+        font-size: 0.85rem;
+        line-height: 1.45;
+    }
+
+    .swiper-pagination-bullet {
+        background: transparent;
+        border: 1px solid $text-dark;
+        opacity: 1;
+        width: 10px;
+        height: 10px;
+
+        &-active {
+            background: $text-dark;
+        }
+    }
+}
+
+@media (max-width: 767.98px) {
+    .testimonial-section {
+        .section-main-heading {
+            font-size: 2.15rem;
+        }
+
+        .testimonial-badge-label {
+            font-size: 0.875rem;
+        }
+
+        .testimonial-quote-text {
+            font-size: 0.925rem;
+        }
+    }
+}
+
+// testimonial section end
+
+// swiper bullets
+// Style the pagination dots container layout container
+.swiper-pagination {
+    bottom: 10px !important;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 25px;
+}
+
+// Customize the default Swiper dot styling to match your mockup image
+.swiper-pagination-bullet {
+    background: transparent !important;
+    border: 1px solid $text-dark !important; // Dark outline circle
+    opacity: 1 !important;
+    border-radius: $radius-rounded;
+    width: 10px;
+    height: 10px;
+    transition: all 0.2s ease;
+
+    // Active state turns solid dark gray/black
+    &-active {
+        background: $text-dark !important;
+    }
+}
+
+// Faq section
+.faq-section {
+    background-color: $bg-light;
+
+    .section-title {
+        color: $text-dark;
+    }
+
+    // Target the specific grouped container items securely
+    .unified-faq-accordion {
+        .accordion-item {
+            border: 1px solid $border-gray !important; // Replace with your variable $border-gray if defined
+            border-radius: 12px !important;
+            background-color: $bg-light;
+            transition: all 0.2s ease;
+
+            &:hover {
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            }
+        }
+
+        .accordion-button {
+            padding: 1.25rem 1.5rem;
+            font-size: $fs-common-md;
+            color: $text-dark;
+            background-color: transparent;
+            box-shadow: none !important;
+            outline: 0 !important;
+            border-radius: 12px !important;
+
+            &::after {
+                transition: transform 0.2s ease;
+            }
+
+            // Clean handling for open active state text transformation rules
+            &:not(.collapsed) {
+                color: $text-light !important; // Replace with $text-light
+                background-color: $primary !important; // Replace with your main theme variable $primary
+                border-bottom-left-radius: 0px !important;
+                border-bottom-right-radius: 0px !important;
+
+                &::after {
+                    filter: brightness(0) invert(1); // Turns standard collapse arrow white when active
+                }
+            }
+        }
+
+        .accordion-body {
+            padding: 1.25rem 1.5rem;
+            font-size: $fs-common-base;
+            line-height: 1.6;
+            background-color: $bg-light;
+        }
+    }
+}
+
+.cab-services-section {
+    .main-section-heading {
+        font-size: 1.75rem;
+        letter-spacing: -0.5px;
+    }
+
+    // Card Outer Bounds Matching the Matrix grid
+    .tour-service-card {
+        border: 1px solid #dcdcdc;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+        &:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+    }
+
+    .card-image-link {
+        display: block;
+        border-bottom: 1px solid #e5e5e5;
+        height: 180px;
+
+        .tour-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+    }
+
+    .tour-service-card:hover .tour-card-img {
+        transform: scale(1.05);
+    }
+
+    .tour-card-title {
+        font-size: $fs-common-base;
+        line-height: 1.4;
+
+        .title-anchor {
+            color: #1e3a8a; // Corporate deep blue text
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: #fab637; // Changes to primary accent color on hover
+            }
+        }
+
+        @media(max-width:576px) {
+            font-size: $fs-common-sm;
+        }
+    }
+}
+
+// // use or whatsapp btn 
+.whatsapp-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: $whatsapp-green;
+    color: $text-light;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 36px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    text-decoration: none;
+    z-index: 1000;
+}
+
+.link-text {
+    &-light {
+        color: $text-light !important;
+
+        &:hover {
+            color: $primary !important;
+        }
+    }
+
+    &-dark {
+        color: $text-dark !important;
+
+        &:hover {
+            color: $primary !important;
+        }
+    }
+
+    &-primary {
+        color: $primary;
+
+        &:hover {
+            color: $text-dark
+        }
+    }
+}
+
+.detail-page-header-bg {
+    position: relative;
+    min-height: 360px;
+    background-color: $primary;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+
+    &.has-bg-image {
+        background-image:
+            linear-gradient(
+                180deg,
+                rgba($primary, 0.35) 0%,
+                rgba($primary, 0.82) 100%
+            ),
+            var(--header-bg);
+    }
+
+    @media (max-width: 767.98px) {
+        min-height: 260px;
+    }
+}
