@@ -245,7 +245,7 @@ const AppDownloadBanner = ({
               delay={0.1}
             > */}
             <div className="download-buttons-group d-flex flex-wrap gap-3">
-              <Link href={iosLink} passHref target="_blank">
+              <Link href={iosLink} passHref target="_blank" className="mb-3 mb-md-0">
                 <div className="btn-square py-2 accent d-inline-flex align-items-center gap-2 fw-semibold text-white">
                   <PhoneCall />
                   {displayContactBtn}
