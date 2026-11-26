@@ -256,7 +256,7 @@ export const TRANSLATIONS = {
       highlightWord: "Journey",
     },
     servicesGridSec: {
-      heading: "Prachi Tours & Travels Cab / Taxi Rental Services",
+      heading: "",
       viewDetailsBtn: "View Tour Details",
     },
     serviceTabsSec: {
@@ -658,7 +658,7 @@ export const TRANSLATIONS = {
     },
     servicesSec: {},
     servicesGridSec: {
-      heading: "प्राची टूर्स एंड ट्रैवल्स कैब / टैक्सी रेंटल सेवाएं",
+      heading: "",
       viewDetailsBtn: "यात्रा विवरण देखें",
     },
     serviceTabsSec: {
@@ -1059,7 +1059,7 @@ export const TRANSLATIONS = {
     },
     servicesSec: {},
     servicesGridSec: {
-      heading: "प्राची टूर्स अँड ट्रॅव्हल्स कॅब / टॅक्सी रेंटल सेवा",
+      heading: "",
       viewDetailsBtn: "सहल तपशील पहा",
     },
     serviceTabsSec: {

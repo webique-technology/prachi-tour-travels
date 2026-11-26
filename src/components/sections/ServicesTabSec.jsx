@@ -15,6 +15,7 @@ const ServiceTabsSection = ({
   sliderBtns = false,
   page = "home",
   translationKey,
+  bgVariant,
 }) => {
   const { t, pick } = useLanguage();
 
@@ -89,28 +90,32 @@ const ServiceTabsSection = ({
   );
 
   return (
-    <section className="service-tabs-section section-padding position-relative">
+    <section
+      className={`service-tabs-section section-padding position-relative ${bgVariant}`}
+    >
       <Container>
         {/* Title & Optional Description Block */}
-        <div className="text-center mb-4">
-          <div className="h-100">
-            <h2 className="section-title text-dark">
-              {displayTitle}{" "}
-              {displayHighlight && (
-                <span className="title-highlight">{displayHighlight}</span>
+        {displayTitle && (
+          <div className="text-center mb-4">
+            <div className="h-100">
+              <h2 className="section-title text-dark">
+                {displayTitle}{" "}
+                {displayHighlight && (
+                  <span className="title-highlight">{displayHighlight}</span>
+                )}
+              </h2>
+              {displayDesc && (
+                <p
+                  className="text-muted mx-auto mt-2"
+                  style={{ maxWidth: "680px" }}
+                >
+                  {displayDesc}
+                </p>
               )}
-            </h2>
-            {displayDesc && (
-              <p
-                className="text-muted mx-auto mt-2"
-                style={{ maxWidth: "680px" }}
-              >
-                {displayDesc}
-              </p>
-            )}
+            </div>
           </div>
-        </div>
-
+        )}
+        
         {/* Dynamic Category Tab Filter Switcher */}
         <div className="tabs-nav-container d-flex justify-content-center mb-4 mb-md-5">
           <div className="tabs-pill d-flex gap-1 gap-sm-2 align-items-center justify-content-center p-2 rounded-3">

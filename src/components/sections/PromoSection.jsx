@@ -66,7 +66,7 @@ const PromoBanner = ({
       <Container fluid className="px-0">
         <Row className="g-0 align-items-stretch">
           {/* Left Column (50% Width): Split Image Box */}
-          <Col lg={6} className="image-side">
+          <Col lg={6} className="image-side d-none d-md-block">
             <div
               className="banner-bg-img h-100 w-100"
               style={{ backgroundImage: `url(${bgImage})` }}
@@ -252,12 +252,12 @@ const AppDownloadBanner = ({
                 </div>
               </Link>
 
-              <Link href={androidLink} passHref target="_blank">
+              {/* <Link href={androidLink} passHref target="_blank">
                 <div className="pill-btn btn py-2 btn-android d-inline-flex align-items-center gap-2 fw-semibold text-white bg-white">
                   <img src="/images/whatsapp.svg" alt="" />
                   {displayWhatsappBtn}
                 </div>
-              </Link>
+              </Link> */}
             </div>
             {/* </AnimationSecComponent> */}
           </Col>

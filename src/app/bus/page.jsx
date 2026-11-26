@@ -41,9 +41,10 @@ const BusPage = () => {
       />
       <ServiceTabsSection
         page="bus"
-        translationKey="busTabsSec"
-        title="Group Travel"
-        highlightWord="Buses"
+        translationKey=""
+        title=""
+        highlightWord=""
+        bgVariant={"bg-white"}
       />
       <PilgrimStandard />
     </main>
