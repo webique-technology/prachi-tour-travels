@@ -112,13 +112,13 @@ const ServiceTabsSection = ({
         </div>
 
         {/* Dynamic Category Tab Filter Switcher */}
-        <div className="tabs-nav-container d-flex justify-content-center mb-5">
+        <div className="tabs-nav-container d-flex justify-content-center mb-4 mb-md-5">
           <div className="tabs-pill d-flex gap-1 gap-sm-2 align-items-center justify-content-center p-2 rounded-3">
             {tabsList.map((tabKey) => (
               <button
                 key={tabKey}
                 type="button"
-                className={`tab-nav-btn border-0 px-2 px-sm-4 py-1 py-sm-2 fw-semibold transition-all ${
+                className={`tab-nav-btn border-0 px-3 px-sm-4 py-2 py-sm-2 fw-semibold transition-all ${
                   activeTab === tabKey ? "active shadow-sm" : ""
                 }`}
                 onClick={() => setActiveTab(tabKey)}
@@ -168,7 +168,7 @@ const ServiceTabsSection = ({
                   return (
                     <Col
                       key={cab.id}
-                      xs={6}
+                      xs={12}
                       sm={6}
                       md={4}
                       lg={3}

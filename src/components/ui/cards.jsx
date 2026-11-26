@@ -395,7 +395,7 @@ const CommonBanner = ({
                     return (
                       <li
                         key={index}
-                        className={`breadcrumb-item-custom d-flex align-items-center ${isLast ? "active-crumb text-white-50" : "text-white"}`}
+                        className={`breadcrumb-item-custom d-flex align-items-center ${isLast ? "active-crumb .common-page-banner crumb-link text-white" : "text-white"}`}
                       >
                         {!isLast && crumb.url ? (
                           <Link

@@ -58,7 +58,7 @@ const WhyChooseUs = ({ title, features, highlightWord }) => {
               LucideIcons[item.iconName] || LucideIcons.HelpCircle;
 
             return (
-              <Col xl={3} lg={3} md={6} xs={6} key={item.id || idx}>
+              <Col xl={3} lg={3} md={6} sm={6} xs={12} key={item.id || idx}>
                 <div
                   // distance={200}
                   // duration={0.7}

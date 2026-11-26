@@ -79,7 +79,7 @@ export default function ContactPageComp() {
       <section className="contact-page-section section-padding">
         <Container>
           {/* Section Header Top Text Group */}
-          <Row className="mb-5">
+          {/* <Row className="mb-5">
             <Col className="text-center">
               <h2 className="contact-main-heading fw-bold mb-3">
                 {tr("heading", "Get in Touch")}
@@ -91,7 +91,7 @@ export default function ContactPageComp() {
                 )}
               </p>
             </Col>
-          </Row>
+          </Row> */}
 
           <Row className="g-4">
             {/* Direct Info Blocks */}

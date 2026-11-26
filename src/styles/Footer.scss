@@ -13,6 +13,10 @@ footer {
         @media(max-width:768px) {
             background-size: cover;
         }
+
+        @media(max-width:576px){
+            margin-bottom: 50px;
+        }
     }
 
     /* Logo */

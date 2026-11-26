@@ -88,9 +88,9 @@ const PopularDestinations = ({
         <Row className="justify-content-center align-items-center text-center mt-4">
           <Col>
             <div className="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3">
-              <span className="footer-promo-text text-muted">
+              {/* <span className="footer-promo-text text-muted">
                 {displayFooterText}
-              </span>
+              </span> */}
               <Link
                 href="/cities"
                 className="pill-btn accent d-flex align-items-center gap-2 px-4 py-2 border-0"

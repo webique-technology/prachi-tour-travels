@@ -103,7 +103,7 @@
 
     .hero-overlay {
         z-index: 1;
-        background: linear-gradient(90deg, #3d3d3d -40.19%, #ff6a000f 99.92%);
+        background: #3d3d3db8;
         position: absolute;
         inset: 0;
     }
@@ -135,7 +135,7 @@
     }
 
     .hero-title-h1 {
-        font-size: Clamp($fs-hero-xl, 6vw, $fs-hero-xxl);
+        font-size: Clamp($fs-hero-xl, 5vw, $fs-hero-xxl);
         line-height: 1.2;
         font-weight: 800;
         // letter-spacing: -0.02em;

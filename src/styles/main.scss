@@ -91,7 +91,7 @@ a {
 
 
 .section-title {
-    font-size: clamp($fs-common-xl-2, 5vw, $fs-common-xxl) !important;
+    font-size: clamp($fs-common-xl, 5vw, $fs-common-xxl) !important;
     color: $text-dark;
     position: relative;
     z-index: 5;

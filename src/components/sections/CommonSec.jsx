@@ -307,51 +307,56 @@ export const BookingForm = ({
           </div>
         </div>
 
-        <Form.Group className="mb-3">
-          <Form.Select
-            name="CabType"
-            value={formData.CabType}
-            onChange={handleChange}
-            className="form-select form-input-field custom-select"
-          >
-            <option value="" className="w-100 p-3">
-              {t("form.vehicleType")}
-            </option>
-            {CabsData?.map((Cab, index) => {
-              const cabValue =
-                typeof Cab.name === "object" && Cab.name !== null
-                  ? Cab.name.en
-                  : Cab.name;
-              const cabLabel = pick(Cab.name);
-
-              return (
-                <option
-                  key={Cab.id || index}
-                  value={cabValue}
-                  className="w-100 p-3"
-                >
-                  {cabLabel}
+        <div className="row g-3 mb-3">
+          <div className="col-12 col-sm-6">
+            <Form.Group className="">
+              <Form.Select
+                name="CabType"
+                value={formData.CabType}
+                onChange={handleChange}
+                className="form-select form-input-field custom-select"
+              >
+                <option value="" className="w-100 p-3">
+                  {t("form.vehicleType")}
                 </option>
-              );
-            })}
-          </Form.Select>
-        </Form.Group>
+                {CabsData?.map((Cab, index) => {
+                  const cabValue =
+                    typeof Cab.name === "object" && Cab.name !== null
+                      ? Cab.name.en
+                      : Cab.name;
+                  const cabLabel = pick(Cab.name);
 
-        <Form.Group className="mb-3">
-          <Form.Select
-            name="tourType"
-            value={formData.tourType}
-            onChange={handleChange}
-            className="form-select form-input-field custom-select"
-          >
-            <option value="">{t("form.tourType")}</option>
-            {tourTypeOptions.map((tour, index) => (
-              <option key={index} value={tour.value}>
-                {tour.label}
-              </option>
-            ))}
-          </Form.Select>
-        </Form.Group>
+                  return (
+                    <option
+                      key={Cab.id || index}
+                      value={cabValue}
+                      className="w-100 p-3"
+                    >
+                      {cabLabel}
+                    </option>
+                  );
+                })}
+              </Form.Select>
+            </Form.Group>
+          </div>
+          <div className="col-12 col-sm-6">
+            <Form.Group className="">
+              <Form.Select
+                name="tourType"
+                value={formData.tourType}
+                onChange={handleChange}
+                className="form-select form-input-field custom-select"
+              >
+                <option value="">{t("form.tourType")}</option>
+                {tourTypeOptions.map((tour, index) => (
+                  <option key={index} value={tour.value}>
+                    {tour.label}
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+          </div>
+        </div>
 
         <div className="row g-3 mb-3">
           <div className="col-12 col-sm-6">
@@ -518,7 +523,9 @@ export const PilgrimStandard = () => {
                   <h3 className="card-heading fw-bold mb-3">{item.title}</h3>
 
                   {/* Card Description */}
-                  <p className="card-desc lh-base mb-0 d-none d-sm-block">{item.description}</p>
+                  <p className="card-desc lh-base mb-0 d-none d-sm-block">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             </Col>

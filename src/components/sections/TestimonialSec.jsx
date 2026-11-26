@@ -33,10 +33,10 @@ const TestimonialSec = () => {
     <section className="testimonial-section section-padding bg-white">
       <Container>
         {/* Section Heading */}
-        <Row className="justify-content-center mb-4">
+        <Row className="justify-content-center mb-4 mb-md-5">
           <Col
             xs={12}
-            className="d-flex flex-wrap align-items-center justify-content-between gap-3"
+            className="d-flex flex-wrap align-items-center justify-content-center gap-3"
           >
             <h2 className="section-title text-start mb-0">
               {t("testimonialSec.heading")}{" "}
@@ -44,14 +44,6 @@ const TestimonialSec = () => {
                 {t("testimonialSec.highlight")}
               </span>
             </h2>
-            <LinkPillBtn
-              href={
-                "#review"
-              }
-              btnText={t("testimonialSec.reviewBtn")}
-              target={"_blank"}
-              rightIcon={<ArrowRight />}
-            />
           </Col>
         </Row>
 

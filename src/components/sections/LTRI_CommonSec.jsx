@@ -117,7 +117,7 @@ const LeftTextRightImageCommnSec = ({
             {displayKeyPoints && (
               <Row className="g-4 mb-3">
                 {displayKeyPoints.map((item, i) => (
-                  <Col xs={6} key={item.id || i}>
+                  <Col sm={12} md={6} key={item.id || i}>
                     <div className="d-flex gap-3 key-display-card">
                       <div className="flex-shrink-0 key-icon d-flex flex-column align-items-center justify-content-center">
                         <img src={item.imgIcon} alt="" />
@@ -142,7 +142,7 @@ const LeftTextRightImageCommnSec = ({
             {displayVM && (
               <Row className="g-4 mb-3">
                 {displayVM.map((item, i) => (
-                  <Col xs={12} sm={6} key={item.id || i}>
+                  <Col sm={12} md={6} key={item.id || i}>
                     <div className="d-flex gap-3 key-display-card h-100">
                       <div className="d-flex flex-column align-items-start justify-content-start">
                         <h4 className="fw-bold mb-2">{pick(item.title)}</h4>
