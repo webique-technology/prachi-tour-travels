@@ -423,12 +423,12 @@
     }
 }
 
-@media (max-width: 767) {
+@media (max-width: 767px) {
     .app-download-banner {
 
         .banner-heading {
             text-align: center;
-            font-size: $fs-common-xl-2;
+            font-size: $fs-common-xl;
         }
 
         .download-buttons-group {

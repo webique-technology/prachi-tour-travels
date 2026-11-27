@@ -28,13 +28,14 @@ const ServicesGridCardSection = ({ data = [], heading, btnText }) => {
     <section className="cab-services-section py-5 bg-white">
       <Container>
         {/* Component Header Block */}
-        <div className="text-center mb-5">
-          <h2 className="main-section-heading fw-bold text-dark">
-            {displayHeading}
-          </h2>
-          <div className="heading-underline"></div>
-        </div>
-
+        {displayHeading && (
+          <div className="text-center mb-5">
+            <h2 className="main-section-heading fw-bold text-dark">
+              {displayHeading}
+            </h2>
+            <div className="heading-underline"></div>
+          </div>
+        )}
         {/* Dynamic Loops mapping exactly 4 cards per row on large devices */}
         <Row className="g-4">
           {data?.map((tour, index) => {

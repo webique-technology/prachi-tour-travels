@@ -257,7 +257,7 @@ export const TRANSLATIONS = {
     },
     servicesGridSec: {
       heading: "",
-      viewDetailsBtn: "View Tour Details",
+      viewDetailsBtn: "View Details",
     },
     serviceTabsSec: {
       title: "Choose Your Ride For Every",
@@ -659,7 +659,7 @@ export const TRANSLATIONS = {
     servicesSec: {},
     servicesGridSec: {
       heading: "",
-      viewDetailsBtn: "यात्रा विवरण देखें",
+      viewDetailsBtn: "विवरण देखें",
     },
     serviceTabsSec: {
       title: "हर सफर के लिए चुनें अपनी मनपसंद",
@@ -1060,7 +1060,7 @@ export const TRANSLATIONS = {
     servicesSec: {},
     servicesGridSec: {
       heading: "",
-      viewDetailsBtn: "सहल तपशील पहा",
+      viewDetailsBtn: "तपशील पहा",
     },
     serviceTabsSec: {
       title: "प्रत्येक प्रवासासाठी निवडा तुमची",
